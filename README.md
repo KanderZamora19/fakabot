@@ -19,6 +19,14 @@
 
 ---
 
+## 🎬 在线演示
+
+**体验演示机器人**：[@fakawan_bot](https://t.me/fakawan_bot)
+
+> 💡 演示机器人展示完整功能，但需要授权码才能实际使用。
+
+---
+
 ## ⚠️ 重要说明
 
 本项目需要**授权码**才能运行。代码已内置授权验证系统，无法绕过。
@@ -712,7 +720,19 @@ networks:
 
 ## 📞 购买授权
 
-- **Telegram**: https://t.me/sonhshu
+### 联系方式
+
+- **Telegram**: [@sonhshu](https://t.me/sonhshu)
+- **演示机器人**: [@fakawan_bot](https://t.me/fakawan_bot)
+
+### 支付方式
+
+**USDT (TRC20)**：
+```
+TDZM5DSSq8SrB8QTSBHyNwrcTswtCjKs9t
+```
+
+> 💡 支付后请联系客服，提供交易哈希和 Telegram 用户名
 
 ---
 
@@ -901,7 +921,7 @@ A: 最低 1核1GB，推荐 1核2GB。月费约 $5-10。
 A: 不是必须的，但强烈推荐。域名可以配置 SSL，更安全。
 
 **Q: 支持哪些支付方式？**  
-A: 支付宝、微信、USDT (TOKEN188)、USDT (柠檬支付)。
+A: 机器人支持支付宝、微信、USDT (TOKEN188)、USDT (柠檬支付)。购买授权使用 USDT (TRC20)。
 
 **Q: 可以自定义界面吗？**  
 A: 可以，修改配置文件中的文案和按钮即可。
