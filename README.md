@@ -3,6 +3,13 @@
 [![License](https://img.shields.io/badge/license-Commercial-blue.svg)]()
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)]()
 [![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/sonhshu)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)]()
+
+<div align="center">
+
+![Fakabot Banner](./images/banner.png)
+
+</div>
 
 > 🚀 **全自动发卡系统** | 支持多种支付方式 | 订单自动处理 | Redis 高性能缓存
 
@@ -10,9 +17,37 @@
 
 ---
 
+## 📸 界面预览
+
+<div align="center">
+
+### 用户界面
+
+<img src="./images/user-interface.png" width="300" alt="用户界面">
+
+*商品列表、购买流程、支付选择*
+
+### 支付界面
+
+<img src="./images/payment.png" width="300" alt="支付界面">
+
+*支持支付宝、微信、USDT 多种支付方式*
+
+### 管理后台
+
+<img src="./images/admin-panel.png" width="300" alt="管理后台">
+
+*实时数据统计、订单管理、商品管理*
+
+> 📝 **注意**：图片正在制作中，完成后将更新。想查看实际效果请联系 [📱 @sonhshu](https://t.me/sonhshu)
+
+</div>
+
+---
+
 ## 📺 演示视频
 
-[点击查看演示视频](https://t.me/sonhshu)
+[🎬 点击查看完整演示视频](https://t.me/sonhshu)
 
 ---
 
@@ -624,6 +659,12 @@ networks:
 
 ## ✨ 核心功能
 
+<div align="center">
+
+![Features](./images/features.png)
+
+</div>
+
 ### 💳 支付系统
 
 支持 **4 种主流支付方式**：
@@ -649,6 +690,12 @@ networks:
    - 低手续费
 
 ### 🎯 自动发货
+
+<div align="center">
+
+![Auto Delivery](./images/auto-delivery.png)
+
+</div>
 
 - ✅ **支付成功自动发货** - 无需人工干预
 - ✅ **多种发货方式**：
