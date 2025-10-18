@@ -191,11 +191,7 @@ docker-compose logs -f
 **Docker Compose 配置**：
 
 项目已包含 `docker-compose.yml`，自动配置：
-- ✅ Fakabot 主程序
-- ✅ Redis 缓存服务
-- ✅ 数据持久化
-- ✅ 自动重启
-- ✅ 网络隔离
+- ✅ Fakabot 主程序 · ✅ Redis 缓存服务 · ✅ 数据持久化 · ✅ 自动重启 · ✅ 网络隔离
 
 **常用 Docker 命令**：
 
