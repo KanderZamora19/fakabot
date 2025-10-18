@@ -1,9 +1,13 @@
 # 🤖 Fakabot - 专业的 Telegram 自动发卡机器人
 
-[![License](https://img.shields.io/badge/license-Commercial-blue.svg)]()
-[![Python](https://img.shields.io/badge/python-3.11-blue.svg)]()
-[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/sonhshu)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)]()
+[![GitHub release](https://img.shields.io/github/v/release/GUGEGEBAIDU/fakabot?style=flat-square)](https://github.com/GUGEGEBAIDU/fakabot/releases)
+[![GitHub stars](https://img.shields.io/github/stars/GUGEGEBAIDU/fakabot?style=flat-square)](https://github.com/GUGEGEBAIDU/fakabot/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/GUGEGEBAIDU/fakabot?style=flat-square)](https://github.com/GUGEGEBAIDU/fakabot/network)
+[![GitHub issues](https://img.shields.io/github/issues/GUGEGEBAIDU/fakabot?style=flat-square)](https://github.com/GUGEGEBAIDU/fakabot/issues)
+[![License](https://img.shields.io/badge/license-Commercial-blue.svg?style=flat-square)]()
+[![Python](https://img.shields.io/badge/python-3.11-blue.svg?style=flat-square)]()
+[![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg?style=flat-square)](https://t.me/sonhshu)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg?style=flat-square)]()
 
 <div align="center">
 
@@ -14,6 +18,8 @@
 **适用场景**：知识付费 · 虚拟商品 · 在线课程 · 软件授权 · 会员订阅
 
 🎬 [在线演示](https://t.me/fakawan_bot) · 📱 [联系客服](https://t.me/sonhshu) · 📖 [完整文档](#-快速开始)
+
+中文文档 | [English](README.en.md)
 
 </div>
 
