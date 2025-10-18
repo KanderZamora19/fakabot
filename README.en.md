@@ -83,34 +83,29 @@ Supports **4 mainstream payment methods**:
 **Admin Features**:
 - 📋 Order list (all, pending, completed, failed)
 - 🔍 Order search (by ID, user, product)
-- 📈 Sales statistics (daily, weekly, monthly)
-- 💰 Revenue statistics (by product, by payment method)
-- 📊 Data export (CSV, Excel)
+- 💰 Order statistics (amount, quantity)
 
 ### 👥 User Management
 
 **User System**:
 - 👤 User profiles (ID, username, registration time)
 - 📊 Purchase history (order count, total amount)
-- 🏷️ User tags (VIP, blacklist, etc.)
-- 📝 User notes (remarks, special instructions)
 
 ### 🛍️ Product Management
 
 **Product Features**:
 - ➕ Add/edit/delete products
 - 📦 Inventory management (auto-deduct, low stock alert)
-- 💰 Price management (original price, sale price)
-- 🎨 Product display (name, description, image)
-- 📊 Sales statistics (sales count, revenue)
+- 💰 Price management
+- 📊 Sales statistics
 
 ### 🎨 Admin Panel
 
 **Management Interface**:
 - 📊 Dashboard (today's orders, revenue, users)
-- 📈 Data charts (sales trends, revenue trends)
+- 📈 Monthly statistics
 - ⚙️ System settings (payment config, notification config)
-- 🔔 Message notifications (new orders, payment success)
+- 🔔 Message notifications
 
 ---
 
