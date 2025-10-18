@@ -48,9 +48,7 @@ vim config.json  # 填写你的配置
 ### 4. 购买授权码
 
 **联系购买**：
-- Telegram: @fakabot_support
-- Email: support@fakabot.com
-- 微信: fakabot2025
+- Telegram: https://t.me/sonhshu
 
 ### 5. 保存授权码
 
@@ -79,9 +77,7 @@ python3 bot.py
 
 ## 📞 购买授权
 
-- **Telegram**: @fakabot_support
-- **Email**: support@fakabot.com
-- **微信**: fakabot2025
+- **Telegram**: https://t.me/sonhshu
 
 ---
 
