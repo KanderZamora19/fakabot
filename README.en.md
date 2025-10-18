@@ -341,11 +341,70 @@ docker-compose logs -f
 
 ---
 
+## ⚠️ Disclaimer
+
+**This project is for learning and legal commercial use only.**
+
+### By using this project, you agree to:
+
+- ✅ Comply with the laws and regulations of your country/region
+- ✅ Use only for legal commercial purposes
+- ✅ Take full responsibility for any consequences
+- ✅ Not infringe on others' legal rights
+
+### Developer Statement:
+
+- 📢 Developers are not responsible for users' usage behavior
+- 📢 Not liable for any losses caused by using this project
+- 📢 Reserve the right to terminate service and revoke licenses at any time
+- 📢 Reserve the right to refuse service to any user
+
+### Strictly Prohibited Uses:
+
+- ❌ Gambling, pornography, or illegal content sales
+- ❌ Distribution of content that infringes intellectual property
+- ❌ Fraud, pyramid schemes, or illegal activities
+- ❌ Money laundering or illegal fund transfers
+- ❌ Other activities that violate laws and regulations
+
+### Legal Use Examples:
+
+- ✅ Online courses and educational content sales
+- ✅ Legitimate software license sales
+- ✅ Membership subscription services
+- ✅ Digital art and music sales
+- ✅ E-books and document sales
+
+**If users are found using this project for illegal purposes, developers will immediately terminate service and cooperate with relevant authorities.**
+
+---
+
 ## 📄 License
 
-This project is a commercial software and requires a license key to run.
+**Commercial License**
+
+This project uses a commercial license:
+
+### Allowed:
+- ✅ Personal learning and research
+- ✅ Legal commercial use after purchasing license
+- ✅ Modification and customization within license scope
+
+### Prohibited:
+- ❌ Commercial use without authorization
+- ❌ Reselling or distributing license keys
+- ❌ Removing or modifying the authorization system
+- ❌ Use for any illegal purposes
+
+### License Terms:
+- License keys are for purchaser's personal use only
+- Non-transferable, non-rentable, non-shareable
+- Violation of license agreement will result in immediate termination
+- Developers reserve the right to pursue legal action
 
 **Copyright © 2025 Fakabot Team. All rights reserved.**
+
+See [Terms of Service](TERMS_OF_SERVICE.md) for details.
 
 ---
 
