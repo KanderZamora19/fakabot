@@ -507,41 +507,252 @@ systemctl status fakabot
 
 ## 🔧 高级配置
 
-### 配置域名和 SSL
+### 配置域名和 SSL（可选但推荐）
 
+> 💡 **说明**：域名不是必须的，但强烈推荐配置。有域名可以：
+> - 配置 Webhook（比轮询更高效）
+> - 配置 SSL 证书（更安全）
+> - 支付回调更稳定
+
+#### 第 1 步：购买域名
+
+**推荐域名服务商**：
+
+| 服务商 | 价格 | 链接 |
+|---------|------|------|
+| 阿里云 | ¥50-100/年 | https://wanwang.aliyun.com |
+| 腾讯云 | ¥50-100/年 | https://dnspod.cloud.tencent.com |
+| Namecheap | $10-15/年 | https://www.namecheap.com |
+| GoDaddy | $10-15/年 | https://www.godaddy.com |
+
+**购买流程**：
+1. 访问域名服务商网站
+2. 搜索你想要的域名（例如：`mybot.com`）
+3. 加入购物车并支付
+4. 完成实名认证（国内域名必须）
+
+#### 第 2 步：配置 DNS 解析
+
+**以阿里云为例**：
+
+1. 登录阿里云控制台
+2. 进入“域名”管理
+3. 点击你的域名，选择“解析”
+4. 添加解析记录：
+
+**解析配置**：
+
+| 记录类型 | 主机记录 | 记录值 | TTL |
+|----------|----------|----------|-----|
+| A | @ | 你的服务器IP | 600 |
+| A | www | 你的服务器IP | 600 |
+
+**示例**：
+- 记录类型：`A`
+- 主机记录：`@` （代表根域名，如 `mybot.com`）
+- 记录值：`123.45.67.89` （你的服务器 IP）
+- TTL：`600` （10分钟）
+
+**验证解析**：
 ```bash
-# 购买域名
-# 阿里云：https://wanwang.aliyun.com
-# 腾讯云：https://dnspod.cloud.tencent.com
+# 等待 5-10 分钟后执行
+ping mybot.com
 
-# 配置 DNS
-# 添加 A 记录：@ → 你的服务器IP
-
-# 安装 Certbot
-apt install certbot -y
-
-# 申请证书
-certbot certonly --standalone -d 你的域名.com
-
-# 证书路径
-# /etc/letsencrypt/live/你的域名.com/fullchain.pem
-# /etc/letsencrypt/live/你的域名.com/privkey.pem
+# 应该显示你的服务器 IP
 ```
 
-### 配置 Nginx 反向代理
+#### 第 3 步：安装 SSL 证书（免费）
+
+**使用 Let's Encrypt 免费证书**：
+
+```bash
+# 1. 安装 Certbot
+apt update
+apt install certbot -y
+
+# 2. 停止占用 80 端口的服务（如果有）
+systemctl stop nginx  # 或 systemctl stop apache2
+
+# 3. 申请证书
+certbot certonly --standalone -d mybot.com -d www.mybot.com
+
+# 4. 按提示输入邮箱地址
+# 同意服务条款：Y
+
+# 5. 证书申请成功！
+```
+
+**证书文件位置**：
+```
+证书文件：/etc/letsencrypt/live/mybot.com/fullchain.pem
+私钥文件：/etc/letsencrypt/live/mybot.com/privkey.pem
+```
+
+**设置自动续期**：
+```bash
+# 测试续期
+certbot renew --dry-run
+
+# 添加定时任务（每天凌晨2点检查）
+crontab -e
+
+# 添加以下内容：
+0 2 * * * certbot renew --quiet
+```
+
+#### 第 4 步：配置 config.json
+
+**修改配置文件**：
+```bash
+vim config.json
+```
+
+**更新 DOMAIN 字段**：
+```json
+{
+  "BOT_TOKEN": "...",
+  "ADMIN_ID": 123456789,
+  "DOMAIN": "https://mybot.com",  // 改成你的域名，注意使用 https://
+  ...
+}
+```
+
+#### 第 5 步：配置 Webhook（可选）
+
+**Webhook 比轮询更高效**：
+
+在 `config.json` 中添加：
+```json
+{
+  "BOT_TOKEN": "...",
+  "DOMAIN": "https://mybot.com",
+  "USE_WEBHOOK": true,
+  "WEBHOOK_PATH": "/webhook/telegram",
+  "WEBHOOK_PORT": 58002
+}
+```
+
+**重启服务**：
+```bash
+docker-compose restart
+```
+
+### 配置 Nginx 反向代理（推荐）
+
+> 💡 **作用**：使用 Nginx 作为反向代理，可以：
+> - 配置 SSL 证书
+> - 负载均衡
+> - 防火墙功能
+> - 更好的性能
+
+#### 安装 Nginx
+
+```bash
+# Ubuntu/Debian
+apt update
+apt install nginx -y
+
+# 启动 Nginx
+systemctl start nginx
+systemctl enable nginx
+```
+
+#### 创建配置文件
+
+```bash
+# 创建配置文件
+vim /etc/nginx/sites-available/fakabot
+```
+
+#### HTTP 配置（基础版）
 
 ```nginx
 server {
     listen 80;
-    server_name 你的域名.com;
+    server_name mybot.com www.mybot.com;
     
     location / {
         proxy_pass http://127.0.0.1:58001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
+```
+
+#### HTTPS 配置（完整版，推荐）
+
+```nginx
+# HTTP 自动跳转 HTTPS
+server {
+    listen 80;
+    server_name mybot.com www.mybot.com;
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS 配置
+server {
+    listen 443 ssl http2;
+    server_name mybot.com www.mybot.com;
+    
+    # SSL 证书配置
+    ssl_certificate /etc/letsencrypt/live/mybot.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/mybot.com/privkey.pem;
+    
+    # SSL 优化配置
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # 反向代理配置
+    location / {
+        proxy_pass http://127.0.0.1:58001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # 超时设置
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+    
+    # Webhook 配置（如果使用）
+    location /webhook/telegram {
+        proxy_pass http://127.0.0.1:58002;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+#### 启用配置
+
+```bash
+# 创建软链接
+ln -s /etc/nginx/sites-available/fakabot /etc/nginx/sites-enabled/
+
+# 测试配置
+nginx -t
+
+# 重启 Nginx
+systemctl restart nginx
+```
+
+#### 验证配置
+
+```bash
+# 访问你的域名
+curl https://mybot.com
+
+# 应该返回机器人的响应
+```
 ```
 
 ### 配置 Redis 缓存
