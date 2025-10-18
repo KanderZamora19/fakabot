@@ -37,9 +37,119 @@
 
 ---
 
-## 🚀 完整部署教程
+## 🚀 快速部署
 
-### 📋 环境要求
+### 🐳 方式一：Docker 一键部署（推荐）⭐
+
+**最简单的部署方式，5分钟搞定！**
+
+#### 前提条件
+
+- 已安装 Docker 和 Docker Compose
+- 已购买授权码
+
+#### 一键部署命令
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/GUGEGEBAIDU/fakabot.git
+cd fakabot
+
+# 2. 复制配置文件
+cp config.json.example config.json
+
+# 3. 编辑配置（填写 Bot Token、管理员 ID 等）
+vim config.json
+
+# 4. 保存授权码
+echo "你的授权码" > license.key
+
+# 5. 一键启动
+docker-compose up -d
+
+# 6. 查看日志
+docker-compose logs -f
+```
+
+#### Docker Compose 配置
+
+项目已包含 `docker-compose.yml`：
+
+```yaml
+version: '3.8'
+
+services:
+  fakabot:
+    build: .
+    container_name: fakabot
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/app/config.json
+      - ./license.key:/app/license.key
+      - ./data:/app/data
+    ports:
+      - "58001:58001"
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - fakabot-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: fakabot-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - fakabot-network
+
+volumes:
+  redis-data:
+
+networks:
+  fakabot-network:
+    driver: bridge
+```
+
+#### 常用 Docker 命令
+
+```bash
+# 启动服务
+docker-compose up -d
+
+# 停止服务
+docker-compose stop
+
+# 重启服务
+docker-compose restart
+
+# 查看日志
+docker-compose logs -f
+
+# 查看状态
+docker-compose ps
+
+# 停止并删除容器
+docker-compose down
+
+# 更新代码后重新构建
+git pull
+docker-compose up -d --build
+```
+
+#### 优势
+
+- ✅ **一键部署** - 无需手动安装依赖
+- ✅ **环境隔离** - 不影响系统环境
+- ✅ **自动重启** - 崩溃自动恢复
+- ✅ **易于更新** - 一条命令更新
+- ✅ **包含 Redis** - 自动配置缓存
+
+---
+
+### 📦 方式二：传统部署
+
+#### 📋 环境要求
 
 - **操作系统**: Linux (Ubuntu 20.04+) / macOS
 - **Python**: 3.11+
@@ -297,6 +407,217 @@ journalctl -u fakabot -f
 📝 客户ID: C001
 📅 到期时间: 2025-11-18
 ⏰ 剩余天数: 30 天
+```
+
+---
+
+## 🐳 Docker 部署详解
+
+### 安装 Docker
+
+#### Ubuntu/Debian
+
+```bash
+# 更新包索引
+sudo apt update
+
+# 安装依赖
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+# 添加 Docker 官方 GPG 密钥
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# 添加 Docker 仓库
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# 安装 Docker
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+
+# 启动 Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# 验证安装
+docker --version
+docker compose version
+```
+
+#### CentOS/RHEL
+
+```bash
+# 安装依赖
+sudo yum install -y yum-utils
+
+# 添加 Docker 仓库
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# 安装 Docker
+sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+
+# 启动 Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+### Docker 部署步骤
+
+#### 1. 克隆项目
+
+```bash
+git clone https://github.com/GUGEGEBAIDU/fakabot.git
+cd fakabot
+```
+
+#### 2. 配置文件
+
+```bash
+# 复制配置文件
+cp config.json.example config.json
+
+# 编辑配置
+vim config.json
+```
+
+**最小配置示例**：
+
+```json
+{
+  "BOT_TOKEN": "你的Bot Token",
+  "ADMIN_ID": 你的Telegram ID,
+  "DOMAIN": "https://你的域名.com",
+  "REDIS": {
+    "enabled": true,
+    "host": "redis",
+    "port": 6379
+  }
+}
+```
+
+#### 3. 保存授权码
+
+```bash
+echo "你的授权码" > license.key
+```
+
+#### 4. 启动服务
+
+```bash
+# 后台启动
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f fakabot
+```
+
+#### 5. 验证运行
+
+```bash
+# 查看容器状态
+docker-compose ps
+
+# 应该看到两个容器运行中：
+# fakabot        Up
+# fakabot-redis  Up
+```
+
+### Docker 常见问题
+
+**Q: 如何更新机器人？**
+
+```bash
+# 拉取最新代码
+git pull
+
+# 重新构建并启动
+docker-compose up -d --build
+```
+
+**Q: 如何查看日志？**
+
+```bash
+# 实时查看日志
+docker-compose logs -f
+
+# 查看最近100行
+docker-compose logs --tail=100
+
+# 只查看机器人日志
+docker-compose logs -f fakabot
+```
+
+**Q: 如何备份数据？**
+
+```bash
+# 备份数据目录
+tar -czf fakabot-backup-$(date +%Y%m%d).tar.gz data/ config.json license.key
+
+# 恢复数据
+tar -xzf fakabot-backup-20250118.tar.gz
+```
+
+**Q: 如何重启服务？**
+
+```bash
+# 重启所有服务
+docker-compose restart
+
+# 只重启机器人
+docker-compose restart fakabot
+```
+
+**Q: 如何进入容器调试？**
+
+```bash
+# 进入机器人容器
+docker-compose exec fakabot sh
+
+# 查看文件
+ls -la
+
+# 退出容器
+exit
+```
+
+**Q: 端口被占用怎么办？**
+
+```bash
+# 修改 docker-compose.yml 中的端口
+ports:
+  - "58002:58001"  # 改成其他端口
+```
+
+### Docker 性能优化
+
+#### 限制资源使用
+
+编辑 `docker-compose.yml`：
+
+```yaml
+services:
+  fakabot:
+    # ... 其他配置
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+```
+
+#### 使用 Docker 网络
+
+```bash
+# 创建自定义网络
+docker network create fakabot-net
+
+# 在 docker-compose.yml 中使用
+networks:
+  default:
+    external:
+      name: fakabot-net
 ```
 
 ---
