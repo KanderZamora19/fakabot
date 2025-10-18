@@ -1,0 +1,60 @@
+{
+  "BOT_TOKEN": "YOUR_TELEGRAM_BOT_TOKEN",
+  "ADMIN_ID": 123456789,
+  "DOMAIN": "https://your-public-domain.example",
+  "ORDER_TIMEOUT_SECONDS": 3600,
+  "PAYMENTS": {
+    "alipay": {
+      "name": "支付宝",
+      "merchant_id": "YOUR_MERCHANT_ID",
+      "gateway": "https://your-gateway.example/submit.php",
+      "key": "YOUR_API_KEY",
+      "type": "alipay",
+      "route": "/pay/yipay"
+    },
+    "wxpay": {
+      "name": "微信",
+      "merchant_id": "YOUR_MERCHANT_ID",
+      "gateway": "https://your-gateway.example/submit.php",
+      "key": "YOUR_API_KEY",
+      "type": "wxpay",
+      "route": "/pay/yipay"
+    },
+    "usdt": {
+      "name": "USDT",
+      "merchant_id": "YOUR_MERCHANT_ID",
+      "gateway": "https://your-usdt-gateway.example",
+      "key": "YOUR_API_KEY",
+      "type": "usdt",
+      "route": "/pay/yipay"
+    }
+  },
+  "START": {
+    "cover_url": "https://img.example/start-cover.jpg",
+    "title": "欢迎选购",
+    "intro": "这里是商店简介或活动文案，可在 config.json 的 START 中自定义。"
+  },
+  "SHOW_QR": true,
+  "PRODUCTS": [
+    {
+      "name": "VIP课程",
+      "cover_url": "https://img.example/cover.jpg",
+      "description": "超赞课程，快速上手",
+      "image_url": "https://img.example/detail.jpg",
+      "full_description": "完整课程大纲与介绍...",
+      "price": 99.9,
+      "tg_group_id": "-1001234567890",
+      "deliver_type": "join_group"
+    },
+    {
+      "name": "进阶社群",
+      "cover_url": "https://img.example/cover2.jpg",
+      "description": "进阶学习与答疑",
+      "image_url": "https://img.example/detail2.jpg",
+      "full_description": "包含每周分享、作业点评...",
+      "price": 199,
+      "tg_group_id": "-1009876543210",
+      "deliver_type": "join_group"
+    }
+  ]
+}

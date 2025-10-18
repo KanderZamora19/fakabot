@@ -1,0 +1,61 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: fakabot-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - fakabot_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+  sp_shop_bot:
+    build: .
+    container_name: fakabot
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    user: "0:0"
+    ports:
+      - "127.0.0.1:58001:58001"
+      - "127.0.0.1:58002:58002"
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./data:/app/data
+    networks:
+      - fakabot_network
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'import urllib.request,sys; sys.exit(0 if urllib.request.urlopen(\"http://127.0.0.1:58001/health\", timeout=3).read().strip()==b\"ok\" else 1)'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  fakabot_network:
+    driver: bridge
+
+volumes:
+  redis_data:
+    driver: local
