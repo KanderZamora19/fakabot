@@ -79,8 +79,7 @@ class OfflineLicenseChecker:
             if days_left <= 7:
                 print(f"\n⚠️  授权即将过期！请及时续费")
                 print(f"💰 续费联系：")
-                print(f"   Telegram: @fakabot_support")
-                print(f"   Email: support@fakabot.com")
+                print(f"   Telegram: https://t.me/sonhshu")
             
             print(f"{'='*60}\n")
             
@@ -98,13 +97,11 @@ class OfflineLicenseChecker:
             print(error_msg)
             print("="*60)
             print("\n💰 购买或续费订阅请联系：")
-            print("   Telegram: @fakabot_support")
-            print("   Email: support@fakabot.com")
-            print("   微信: fakabot2025")
+            print("   Telegram: https://t.me/sonhshu")
             print("\n💳 订阅价格：")
-            print("   月付：$29/月")
-            print("   季付：$79/季（优惠10%）")
-            print("   年付：$299/年（优惠15%）")
+            print("   月付：50 USDT/月")
+            print("   季付：135 USDT/季（优惠10%）")
+            print("   年付：510 USDT/年（优惠15%）")
             print("\n✨ 订阅包含：")
             print("   • 完整功能")
             print("   • 技术支持")
