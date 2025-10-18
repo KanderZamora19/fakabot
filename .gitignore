@@ -32,6 +32,7 @@ data/
 
 # Config
 config.json
+license.key
 *.backup
 *.old
 
