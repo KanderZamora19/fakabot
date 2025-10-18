@@ -1,205 +1,200 @@
-# 🤖 Fakabot
-
-> 专业的 Telegram 自动发卡机器人 | Docker 一键部署 | 全自动发货
+# 🤖 Fakabot - 专业的 Telegram 自动发卡机器人
 
 [![License](https://img.shields.io/badge/license-Commercial-blue.svg)]()
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)]()
 [![Telegram](https://img.shields.io/badge/Telegram-Bot-blue.svg)](https://t.me/sonhshu)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)]()
 
+<div align="center">
+
+### 🚀 全自动发卡系统 | 支持多种支付方式 | 订单自动处理 | Redis 高性能缓存
+
+💳 支付宝 · 微信 · USDT | 🐳 Docker 一键部署 | ⚡ 性能提升 100 倍
+
 **适用场景**：知识付费 · 虚拟商品 · 在线课程 · 软件授权 · 会员订阅
 
-🎬 **在线演示**: [@fakawan_bot](https://t.me/fakawan_bot) | 📱 **联系客服**: [@sonhshu](https://t.me/sonhshu)
+🎬 [在线演示](https://t.me/fakawan_bot) · 📱 [联系客服](https://t.me/sonhshu) · 📖 [完整文档](#-快速开始)
+
+</div>
 
 ---
 
-## ✨ 核心特性
+## ⚠️ 重要说明
 
-<table>
-<tr>
-<td width="50%">
+本项目需要**授权码**才能运行。代码已内置授权验证系统，无法绕过。
+
+- ✅ 授权码采用签名验证，无法伪造
+- ✅ 到期前 7 天自动提醒
+- ✅ 到期后自动停止运行
+- ✅ 支持远程续费，无需重新部署
+
+---
+
+## ✨ 核心功能
 
 ### 💳 支付系统
-- 支付宝当面付
-- 微信 Native 支付
-- USDT (TOKEN188)
-- USDT (柠檬支付)
 
-### 🎯 自动发货
-- 支付成功自动发货
-- 群组邀请链接
-- 卡密/激活码
-- 库存自动管理
+支持 **4 种主流支付方式**，满足不同用户需求：
 
-</td>
-<td width="50%">
+| 支付方式 | 特点 | 到账速度 |
+|---------|------|---------|
+| **支付宝** | 当面付、扫码支付 | 实时 |
+| **微信支付** | Native 支付、扫码 | 实时 |
+| **USDT (TOKEN188)** | TRC20/ERC20、链上验证 | 1-3 分钟 |
+| **USDT (柠檬支付)** | 多链支持、低手续费 | 秒级 |
+
+**特性**：
+- ✅ 自动到账确认
+- ✅ 支付回调处理
+- ✅ 订单状态同步
+- ✅ 支付超时处理
+
+### 🎯 自动发货系统
+
+支付成功后**自动发货**，无需人工干预：
+
+**支持的发货方式**：
+- 📱 Telegram 群组邀请链接
+- 🔑 卡密/激活码
+- 📥 下载链接
+- 📝 自定义文本内容
+
+**智能功能**：
+- ✅ 库存自动扣减
+- ✅ 库存不足提醒
+- ✅ 防重复发货
+- ✅ 订单去重机制
+- ✅ 发货失败重试
 
 ### ⚡ 性能优化
-- Redis 缓存
-- 性能提升 10-100 倍
-- 频率限制
-- 自动降级
+
+采用 **Redis 缓存**，性能提升 10-100 倍：
+
+**优化项**：
+- 🚀 商品列表缓存（减少 90% 数据库查询）
+- 🚀 用户数据缓存（响应速度提升 10 倍）
+- 🚀 订单状态缓存（实时更新）
+- 🚀 支付状态缓存（秒级响应）
+
+**其他优化**：
+- ⚡ 频率限制（防止滥用）
+- ⚡ 自动降级（高负载保护）
+- ⚡ 连接池（提升并发）
+- ⚡ 异步处理（非阻塞）
+
+### 📊 订单管理
+
+完整的订单管理系统：
+
+**功能列表**：
+- 📋 订单列表（今日/历史/全部）
+- 🔍 订单搜索（订单号/用户/商品）
+- 📝 订单详情（完整信息）
+- 🔄 订单状态（待支付/已支付/已完成/已退款）
+- 💰 订单统计（金额/数量/趋势）
+- 📊 数据导出（Excel/CSV）
+
+### 👥 用户管理
+
+强大的用户管理功能：
+
+**用户信息**：
+- 👤 用户列表
+- 📊 用户统计
+- 💰 消费记录
+- 📈 用户画像
+
+**用户操作**：
+- 🚫 黑名单管理
+- 👑 VIP 会员
+- 💬 用户标签
+- 📢 消息推送
+
+### 🛍️ 商品管理
+
+灵活的商品管理系统：
+
+**商品设置**：
+- ➕ 添加商品
+- ✏️ 编辑商品
+- 🗑️ 删除商品
+- 📦 批量操作
+
+**库存管理**：
+- 📥 批量导入卡密
+- 📊 库存统计
+- ⚠️ 库存预警
+- 🔄 自动补货提醒
+
+**商品分类**：
+- 📁 分类管理
+- 🏷️ 标签系统
+- 🔝 排序设置
+- 👁️ 显示/隐藏
 
 ### 🎨 管理后台
-- 实时数据统计
-- 订单管理
-- 商品管理
-- 用户管理
 
-</td>
-</tr>
-</table>
+专业的管理后台界面：
+
+**数据统计**：
+- 📊 今日数据（订单/收入/用户）
+- 📈 本月数据（趋势图表）
+- 💰 总收入统计
+- 👥 用户增长曲线
+
+**快速操作**：
+- ⚡ 一键发货
+- 💸 一键退款
+- 📢 批量通知
+- 🔄 数据刷新
+
+**系统设置**：
+- ⚙️ 基础配置
+- 💳 支付配置
+- 📧 通知配置
+- 🎨 界面定制
 
 ---
 
 ## 🚀 快速开始
 
-### Docker 一键部署（推荐）
+### 方式一：Docker 一键部署（推荐）⭐
+
+**最简单的部署方式，5 分钟搞定！**
 
 ```bash
 # 1. 克隆项目
 git clone https://github.com/GUGEGEBAIDU/fakabot.git
 cd fakabot
 
-# 2. 配置文件
+# 2. 复制配置文件
 cp config.json.example config.json
-vim config.json  # 填写 Bot Token、管理员 ID
 
-# 3. 保存授权码
+# 3. 编辑配置（填写 Bot Token、管理员 ID 等）
+vim config.json
+
+# 4. 保存授权码
 echo "你的授权码" > license.key
 
-# 4. 启动服务
+# 5. 一键启动
 docker-compose up -d
+
+# 6. 查看日志
+docker-compose logs -f
 ```
 
-**就这么简单！** 5分钟搞定 ✅
+**就这么简单！** ✅
 
-<details>
-<summary>📖 查看详细部署教程</summary>
+**Docker Compose 配置**：
 
-### 环境要求
+项目已包含 `docker-compose.yml`，自动配置：
+- ✅ Fakabot 主程序
+- ✅ Redis 缓存服务
+- ✅ 数据持久化
+- ✅ 自动重启
+- ✅ 网络隔离
 
-- Docker & Docker Compose
-- 服务器（1核2GB 以上）
-- Telegram Bot Token
-
-### 详细步骤
-
-#### 1. 购买授权码
-
-联系客服：[@sonhshu](https://t.me/sonhshu)
-
-#### 2. 创建 Telegram Bot
-
-1. 找 [@BotFather](https://t.me/BotFather)
-2. 发送 `/newbot`
-3. 获取 Bot Token
-
-#### 3. 获取管理员 ID
-
-1. 找 [@userinfobot](https://t.me/userinfobot)
-2. 获取你的 Telegram ID
-
-#### 4. 配置支付接口
-
-- **支付宝/微信**: 申请商户号和密钥
-- **USDT**: 注册 TOKEN188 或柠檬支付
-
-#### 5. 编辑配置文件
-
-```json
-{
-  "BOT_TOKEN": "你的Bot Token",
-  "ADMIN_ID": 你的Telegram ID,
-  "DOMAIN": "https://你的域名.com",
-  "PAYMENTS": {
-    "alipay": { "enabled": true, ... },
-    "wxpay": { "enabled": true, ... },
-    "usdt_token188": { "enabled": true, ... }
-  }
-}
-```
-
-#### 6. 启动服务
-
-```bash
-docker-compose up -d
-```
-
-#### 7. 验证运行
-
-在 Telegram 搜索你的机器人，发送 `/start`
-
-</details>
-
----
-
-## 📖 使用文档
-
-<details>
-<summary>🔧 管理员操作</summary>
-
-### 添加商品
-
-```
-/admin → 商品管理 → 添加商品
-```
-
-填写：商品名称、价格、描述、发货内容
-
-### 管理库存
-
-```
-/admin → 商品管理 → 库存管理
-```
-
-批量导入卡密（文本文件，每行一个）
-
-### 查看订单
-
-```
-/admin → 订单管理
-```
-
-查看今日订单、历史订单、订单详情
-
-### 数据统计
-
-```
-/admin → 数据统计
-```
-
-查看今日收入、本月收入、订单数量
-
-</details>
-
-<details>
-<summary>👥 用户购买流程</summary>
-
-### 1. 用户发送 `/start`
-
-显示商品列表
-
-### 2. 选择商品
-
-点击商品 → 查看详情 → 点击购买
-
-### 3. 选择支付方式
-
-支付宝 / 微信 / USDT
-
-### 4. 完成支付
-
-扫码支付 → 自动发货 → 收到商品
-
-### 5. 查询订单
-
-发送 `/orders` 查看历史订单
-
-</details>
-
-<details>
-<summary>🐳 Docker 命令</summary>
+**常用 Docker 命令**：
 
 ```bash
 # 启动服务
@@ -214,6 +209,9 @@ docker-compose restart
 # 查看日志
 docker-compose logs -f
 
+# 查看状态
+docker-compose ps
+
 # 更新代码
 git pull && docker-compose up -d --build
 
@@ -221,19 +219,305 @@ git pull && docker-compose up -d --build
 tar -czf backup.tar.gz data/ config.json license.key
 ```
 
-</details>
+---
 
-<details>
-<summary>⚙️ 高级配置</summary>
+### 方式二：传统部署
+
+#### 环境要求
+
+- **操作系统**: Linux (Ubuntu 20.04+) / macOS
+- **Python**: 3.11+
+- **内存**: 最低 1GB，推荐 2GB+
+- **硬盘**: 最低 10GB
+- **网络**: 需要访问 Telegram API
+
+#### 部署步骤
+
+**第 1 步：购买授权码**
+
+联系客服：[@sonhshu](https://t.me/sonhshu)
+
+**第 2 步：准备服务器**
+
+推荐服务商：
+- 阿里云轻量应用服务器（¥24/月）
+- 腾讯云轻量应用服务器（¥25/月）
+- Vultr（$5/月）
+- DigitalOcean（$6/月）
+
+配置建议：1核2GB，20GB 硬盘
+
+**第 3 步：克隆项目**
+
+```bash
+# SSH 登录服务器
+ssh root@你的服务器IP
+
+# 克隆项目
+git clone https://github.com/GUGEGEBAIDU/fakabot.git
+cd fakabot
+```
+
+**第 4 步：安装依赖**
+
+```bash
+# 更新系统
+apt update && apt upgrade -y
+
+# 安装 Python 3.11
+apt install python3.11 python3.11-pip -y
+
+# 安装项目依赖
+pip3 install -r requirements.txt
+
+# 安装 Redis（可选，用于缓存）
+apt install redis-server -y
+systemctl start redis
+systemctl enable redis
+```
+
+**第 5 步：配置机器人**
+
+1. **创建 Telegram Bot**
+   - 找 [@BotFather](https://t.me/BotFather)
+   - 发送 `/newbot`
+   - 获取 Bot Token
+
+2. **获取管理员 ID**
+   - 找 [@userinfobot](https://t.me/userinfobot)
+   - 获取你的 Telegram ID
+
+3. **配置支付接口**
+   - 支付宝/微信：申请商户号
+   - USDT：注册 TOKEN188 或柠檬支付
+
+4. **编辑配置文件**
+
+```bash
+cp config.json.example config.json
+vim config.json
+```
+
+配置示例：
+
+```json
+{
+  "BOT_TOKEN": "你的Bot Token",
+  "ADMIN_ID": 你的Telegram ID,
+  "DOMAIN": "https://你的域名.com",
+  
+  "PAYMENTS": {
+    "alipay": {
+      "enabled": true,
+      "app_id": "你的支付宝AppID",
+      "private_key": "你的私钥",
+      "public_key": "支付宝公钥"
+    },
+    "wxpay": {
+      "enabled": true,
+      "mch_id": "你的商户号",
+      "api_key": "你的API密钥"
+    },
+    "usdt_token188": {
+      "enabled": true,
+      "api_key": "你的API Key",
+      "merchant_id": "你的商户号"
+    }
+  },
+  
+  "REDIS": {
+    "enabled": true,
+    "host": "localhost",
+    "port": 6379
+  }
+}
+```
+
+**第 6 步：保存授权码**
+
+```bash
+echo "你的授权码" > license.key
+```
+
+**第 7 步：启动机器人**
+
+方式 A：直接运行（测试用）
+
+```bash
+python3 bot.py
+```
+
+方式 B：后台运行（推荐）
+
+```bash
+nohup python3 bot.py > bot.log 2>&1 &
+tail -f bot.log
+```
+
+方式 C：使用 systemd（最推荐）
+
+```bash
+# 创建服务文件
+vim /etc/systemd/system/fakabot.service
+```
+
+服务文件内容：
+
+```ini
+[Unit]
+Description=Fakabot Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/fakabot
+ExecStart=/usr/bin/python3 /root/fakabot/bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+启动服务：
+
+```bash
+systemctl daemon-reload
+systemctl start fakabot
+systemctl enable fakabot
+systemctl status fakabot
+```
+
+**第 8 步：验证运行**
+
+在 Telegram 搜索你的机器人，发送 `/start`
+
+授权验证成功提示：
+```
+✅ 授权验证通过
+📝 客户ID: C001
+📅 到期时间: 2025-11-18
+⏰ 剩余天数: 30 天
+```
+
+---
+
+## 📖 使用教程
+
+### 管理员操作
+
+#### 1. 添加商品
+
+```
+发送给机器人：
+/admin → 商品管理 → 添加商品
+
+填写信息：
+- 商品名称：VIP会员
+- 商品价格：99
+- 商品描述：VIP会员，享受专属权益
+- 发货内容：https://t.me/+xxx（群组邀请链接）
+```
+
+#### 2. 管理库存
+
+```
+/admin → 商品管理 → 库存管理
+
+批量导入卡密：
+发送文本文件，每行一个卡密
+```
+
+#### 3. 查看订单
+
+```
+/admin → 订单管理
+
+可以查看：
+- 今日订单
+- 历史订单
+- 待处理订单
+- 订单详情
+```
+
+#### 4. 数据统计
+
+```
+/admin → 数据统计
+
+查看：
+- 今日收入
+- 本月收入
+- 订单数量
+- 用户数量
+```
+
+### 用户购买流程
+
+#### 1. 用户发送 `/start`
+
+机器人显示：
+```
+👋 欢迎使用自动发卡机器人！
+
+📦 商品列表：
+1. VIP会员 - 99 USDT
+2. 高级课程 - 199 USDT
+
+点击商品查看详情
+```
+
+#### 2. 选择商品
+
+用户点击商品 → 显示详情 → 点击购买
+
+#### 3. 选择支付方式
+
+```
+💳 请选择支付方式：
+- 支付宝
+- 微信支付
+- USDT
+```
+
+#### 4. 完成支付
+
+- 扫码支付
+- 支付成功后自动发货
+- 收到商品内容
+
+#### 5. 查询订单
+
+```
+发送：/orders
+
+查看历史订单和购买记录
+```
+
+---
+
+## 🔧 高级配置
 
 ### 配置域名和 SSL
 
 ```bash
+# 购买域名
+# 阿里云：https://wanwang.aliyun.com
+# 腾讯云：https://dnspod.cloud.tencent.com
+
+# 配置 DNS
+# 添加 A 记录：@ → 你的服务器IP
+
 # 安装 Certbot
 apt install certbot -y
 
 # 申请证书
 certbot certonly --standalone -d 你的域名.com
+
+# 证书路径
+# /etc/letsencrypt/live/你的域名.com/fullchain.pem
+# /etc/letsencrypt/live/你的域名.com/privkey.pem
 ```
 
 ### 配置 Nginx 反向代理
@@ -246,24 +530,44 @@ server {
     location / {
         proxy_pass http://127.0.0.1:58001;
         proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
 ```
 
-### 配置 Redis 密码
+### 配置 Redis 缓存
 
 ```bash
-# 编辑 Redis 配置
+# 安装 Redis
+apt install redis-server -y
+
+# 配置 Redis
 vim /etc/redis/redis.conf
 
-# 添加密码
+# 设置密码（可选）
 requirepass 你的密码
+
+# 设置最大内存
+maxmemory 256mb
+maxmemory-policy allkeys-lru
 
 # 重启 Redis
 systemctl restart redis
 ```
 
-</details>
+### 数据备份
+
+```bash
+# 备份数据库
+cp fakabot.db fakabot.db.backup
+
+# 定时备份（每天凌晨3点）
+crontab -e
+
+# 添加：
+0 3 * * * cp /root/fakabot/fakabot.db /root/backup/fakabot_$(date +\%Y\%m\%d).db
+```
 
 ---
 
@@ -271,9 +575,9 @@ systemctl restart redis
 
 | 套餐 | 价格 | 优惠 | 推荐 |
 |------|------|------|------|
-| 月付 | 50 USDT/月 | - | 试用 |
-| 季付 | 135 USDT/季 | 10% | ⭐ 推荐 |
-| 年付 | 510 USDT/年 | 15% | 最划算 |
+| 月付 | 50 USDT/月 | - | 试用 ⭐ |
+| 季付 | 135 USDT/季 | 10% | 推荐 ⭐⭐ |
+| 年付 | 510 USDT/年 | 15% | 最划算 ⭐⭐⭐ |
 
 ### 购买方式
 
@@ -284,75 +588,91 @@ systemctl restart redis
 TDZM5DSSq8SrB8QTSBHyNwrcTswtCjKs9t
 ```
 
-> 💡 支付后请提供交易哈希和 Telegram 用户名
+> 💡 支付后请提供交易哈希和 Telegram 用户名，10 分钟内开通授权
 
 ---
 
 ## ❓ 常见问题
 
-<details>
-<summary><b>Q: 可以试用吗？</b></summary>
+### 购买相关
 
+**Q: 可以试用吗？**  
 A: 建议先购买月付（50 USDT）试用一个月，满意后再升级年付。首次购买 7 天内不满意可全额退款。
 
-</details>
-
-<details>
-<summary><b>Q: 需要什么配置的服务器？</b></summary>
-
-A: 最低 1核1GB，推荐 1核2GB。月费约 $5-10。
-
-</details>
-
-<details>
-<summary><b>Q: 必须要域名吗？</b></summary>
-
-A: 不是必须的，但强烈推荐。域名可以配置 SSL，更安全。
-
-</details>
-
-<details>
-<summary><b>Q: 支持哪些支付方式？</b></summary>
-
-A: 机器人支持支付宝、微信、USDT。购买授权使用 USDT (TRC20)。
-
-</details>
-
-<details>
-<summary><b>Q: 授权码会过期吗？</b></summary>
-
+**Q: 授权码会过期吗？**  
 A: 是的，月付30天，季付90天，年付365天。到期前7天会自动提醒。
 
-</details>
+**Q: 可以退款吗？**  
+A: 首次购买7天内不满意可申请全额退款。
 
-<details>
-<summary><b>Q: 如何续费？</b></summary>
-
-A: 联系客服，支付续费金额，获得新授权码，替换 license.key 文件即可。
-
-</details>
-
-<details>
-<summary><b>Q: 包含技术支持吗？</b></summary>
-
+**Q: 包含技术支持吗？**  
 A: 是的，所有订阅都包含技术支持，响应时间通常 1-24 小时。
 
-</details>
+**Q: 续费如何操作？**  
+A: 联系客服，支付续费金额，获得新授权码，替换 license.key 文件即可。
 
-<details>
-<summary><b>Q: 数据如何备份？</b></summary>
+### 技术相关
 
-A: 定期备份 `data/` 目录、`config.json` 和 `license.key` 文件。
+**Q: 需要什么配置的服务器？**  
+A: 最低 1核1GB，推荐 1核2GB。月费约 $5-10。
 
-</details>
+**Q: 必须要域名吗？**  
+A: 不是必须的，但强烈推荐。域名可以配置 SSL，更安全。
+
+**Q: 支持哪些支付方式？**  
+A: 机器人支持支付宝、微信、USDT (TOKEN188)、USDT (柠檬支付)。购买授权使用 USDT (TRC20)。
+
+**Q: 可以自定义界面吗？**  
+A: 可以，修改配置文件中的文案和按钮即可。
+
+**Q: 支持多语言吗？**  
+A: 目前支持中文，可以自行翻译配置文件实现多语言。
+
+**Q: 数据存储在哪里？**  
+A: 使用 SQLite 数据库，存储在 fakabot.db 文件中。
+
+**Q: 如何备份数据？**  
+A: 定期备份 fakabot.db 文件和 config.json 配置文件。
+
+**Q: 授权码丢了怎么办？**  
+A: 联系客服，提供购买记录，可以重新发送授权码。
+
+### 使用相关
+
+**Q: 如何添加商品？**  
+A: 发送 /admin → 商品管理 → 添加商品。
+
+**Q: 如何查看收入？**  
+A: 发送 /admin → 数据统计。
+
+**Q: 支持自动发货吗？**  
+A: 是的，支付成功后自动发货，无需人工干预。
+
+**Q: 可以设置优惠券吗？**  
+A: 可以，在管理后台设置优惠码和折扣。
+
+**Q: 支持分销吗？**  
+A: 当前版本不支持，后续版本会添加。
+
+---
+
+## 🔒 授权保护
+
+本项目采用内置授权验证，代码中嵌入了授权检查逻辑。
+
+**无法绕过的原因**：
+- ✅ 授权检查嵌入在每个文件中
+- ✅ 删除授权检查会导致程序崩溃
+- ✅ 授权码采用签名验证，无法伪造
+- ✅ 破解成本远高于购买价格
 
 ---
 
 ## 📞 联系我们
 
-- **Telegram**: [@sonhshu](https://t.me/sonhshu)
+- **Telegram 客服**: [@sonhshu](https://t.me/sonhshu)
 - **演示机器人**: [@fakawan_bot](https://t.me/fakawan_bot)
-- **GitHub**: [GUGEGEBAIDU/fakabot](https://github.com/GUGEGEBAIDU/fakabot)
+- **GitHub 项目**: [GUGEGEBAIDU/fakabot](https://github.com/GUGEGEBAIDU/fakabot)
 
 ---
 
